@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cavoq/TikReport#readme",
   "dependencies": {
+    "@types/puppeteer": "^7.0.4",
     "puppeteer": "^20.5.0"
   },
   "devDependencies": {
