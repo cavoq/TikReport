@@ -1,5 +1,5 @@
 import fs from "fs";
-import puppeteer, { Browser } from "puppeteer";
+import puppeteer, { Browser, ElementHandle } from "puppeteer";
 
 
 const CONFIG_FILE = "config.json";
@@ -44,13 +44,49 @@ function isValidProxy(proxy: string): boolean {
 
 async function getBrowser(proxy: string): Promise<Browser> {
   const browser = await puppeteer.launch({
+    ignoreDefaultArgs: ['--enable-automation'],
     headless: false,
     args: [
-      `--proxy-server=${proxy}`
+      `--proxy-server=${proxy}`,
+      '--start-maximized',
+      '--disable-infobars',
+      '--disable-extensions',
+      '--ignore-certificate-errors'
     ],
   });
   return browser;
 }
+
+async function reportVideo(browser: Browser, user: string, videoId: string) {
+  const page = await browser.newPage();
+  await page.goto(`https://www.tiktok.com/@${user}/video/${videoId}`);
+
+  const xPathDots = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[5]/div[2]/div[2]/div[5]/svg"
+  const [dots] = await page.$x(xPathDots);
+  if (dots) {
+    await (dots as ElementHandle<Element>).click();
+  } else {
+    console.log('Element not found');
+  }
+
+  await browser.close();
+}
+
+async function main() {
+  const data = readJsonFile(CONFIG_FILE);
+  const proxies = readProxyList(data.proxies);
+  for (const proxy of proxies) {
+    try {
+      const browser = await getBrowser(proxy);
+      await reportVideo(browser, data.user, data.videoId);
+    } catch (error) {
+      continue;
+    }
+  }
+}
+
+
+main();
 
 
 export {
