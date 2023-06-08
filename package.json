@@ -1,0 +1,38 @@
+{
+  "name": "tikreport",
+  "version": "1.0.0",
+  "description": "TikTok report bot.",
+  "type": "module",
+  "main": "tik-report.js",
+  "scripts": {
+    "start": "ts-node --esm tik-report.ts",
+    "test": "npx jest tik-report.test.ts",
+    "lint": "npx eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cavoq/TikReport.git"
+  },
+  "author": "Cavoq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cavoq/TikReport/issues"
+  },
+  "homepage": "https://github.com/cavoq/TikReport#readme",
+  "dependencies": {
+    "puppeteer": "^20.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
+    "eslint": "^8.42.0",
+    "eslint-config-standard-with-typescript": "^35.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.1.3"
+  }
+}
