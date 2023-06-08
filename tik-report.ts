@@ -46,7 +46,7 @@ async function getBrowser(proxy: string): Promise<Browser> {
   const browser = await puppeteer.launch({
     headless: false,
     args: [
-      `--proxy-server=${proxy}`,
+      `--proxy-server=${proxy}`
     ],
   });
   return browser;
@@ -56,4 +56,6 @@ async function getBrowser(proxy: string): Promise<Browser> {
 export {
   readJsonFile,
   readProxyList,
+  isValidProxy,
+  getBrowser,
 }
