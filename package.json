@@ -5,8 +5,8 @@
   "type": "module",
   "main": "tik-report.js",
   "scripts": {
-    "start": "ts-node --esm tik-report.ts",
-    "test": "npx jest tik-report.test.ts"
+    "start": "ts-node --esm src/tik-report.ts",
+    "test": "npx jest tests/*.test.ts --watchAll"
   },
   "repository": {
     "type": "git",
