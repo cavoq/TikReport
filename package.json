@@ -2,10 +2,10 @@
   "name": "tikreport",
   "version": "1.0.0",
   "description": "TikTok report bot.",
-  "type": "module",
   "main": "tik-report.js",
+  "type": "module",
   "scripts": {
-    "start": "ts-node --esm src/tik-report.ts",
+    "start": "npx ts-node src/tik-report.ts",
     "test": "npx jest tests/*.test.ts --watchAll"
   },
   "repository": {

@@ -1,4 +1,4 @@
-import fs from "fs";
+import { readFileSync } from "fs";
 import puppeteer, { Browser, ElementHandle, Page } from "puppeteer";
 import { readJsonFile } from "./utils";
 
@@ -7,7 +7,7 @@ const CONFIG_FILE = "config-test.json";
 
 
 function readProxyList(file: string): string[] {
-  const list = fs.readFileSync(file, "utf8");
+  const list = readFileSync(file, "utf8");
   const proxyList = list.split("\n");
   const validProxies: string[] = [];
 

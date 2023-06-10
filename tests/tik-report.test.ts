@@ -2,7 +2,7 @@ import {
     readProxyList,
     isValidProxy,
     getBrowser
-} from '../src/tik-report';
+} from "../src/tik-report";
 
 
 describe('TikReport', () => {

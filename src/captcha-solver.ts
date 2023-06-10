@@ -1,11 +1,12 @@
+import { readJsonFile } from "./utils";
 import puppeteer from "puppeteer";
 import { Browser, Page } from "puppeteer";
 
 
-async function getImage(browser: Browser, page: Page) {
-    const slider = await page.$('.geetest_slider_button');
-    if (!slider) {
-        throw new Error('Captcha slider not found');
-    }
-    return slider;
+const ELEMENTS = readJsonFile('elements/captcha.json');
+
+
+export async function getCaptchaImage(browser: Browser, page: Page) {
+    // Wait for the captcha element to be visible
+    await page.waitForXPath(ELEMENTS["captcha"]);
 }

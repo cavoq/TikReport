@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "module": "es2020",
-    "esModuleInterop": true,
-    "moduleResolution": "node"
-  }
+    "module": "ES2022",
+    "moduleResolution": "node",
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["src/*.ts", "tests/*.ts"]
 }
