@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import puppeteer, { Browser, ElementHandle, Page } from "puppeteer";
+import * as puppeteer from "puppeteer";
 import { readJsonFile } from "./utils";
 
 
@@ -37,8 +37,8 @@ function isValidProxy(proxy: string): boolean {
   return true;
 }
 
-async function getBrowser(proxy: string): Promise<Browser> {
-  const browser = await puppeteer.launch({
+async function getBrowser(proxy?: string): Promise<puppeteer.Browser> {
+  const launchOptions = {
     ignoreDefaultArgs: ['--enable-automation'],
     headless: false,
     args: [
@@ -47,11 +47,17 @@ async function getBrowser(proxy: string): Promise<Browser> {
       '--disable-extensions',
       '--ignore-certificate-errors'
     ],
-  });
+  };
+
+  if (proxy) {
+    launchOptions.args.push(`--proxy-server=${proxy}`);
+  }
+
+  const browser = await puppeteer.launch(launchOptions);
   return browser;
 }
 
-async function reportVideo(browser: Browser, user: string, videoId: string) {
+async function reportVideo(browser: puppeteer.Browser, user: string, videoId: string) {
   const page = await browser.newPage();
   await page.goto(`https://www.tiktok.com/@${user}/video/${videoId}`);
 
@@ -66,7 +72,7 @@ async function reportVideo(browser: Browser, user: string, videoId: string) {
   await browser.close();*/
 }
 
-async function solveCaptcha(page: Page) {
+async function solveCaptcha(page: puppeteer.Page) {
   
 }
 
