@@ -1,5 +1,4 @@
 import {
-    readJsonFile,
     readProxyList,
     isValidProxy,
     getBrowser
@@ -7,12 +6,6 @@ import {
 
 
 describe('TikReport', () => {
-
-    test('readJsonFile', () => {
-        const data = readJsonFile('config.json');
-        expect(data).toBeDefined();
-        expect(data).toHaveProperty('proxies');
-    });
 
     test('readProxyList', () => {
         const list = readProxyList('proxies.txt');

@@ -1,15 +1,10 @@
 import fs from "fs";
 import puppeteer, { Browser, ElementHandle, Page } from "puppeteer";
+import { readJsonFile } from "./utils";
 
 
-const CONFIG_FILE = "config.json";
+const CONFIG_FILE = "config-test.json";
 
-
-function readJsonFile(filename: string): { [key: string]: any } {
-  const fileContent = fs.readFileSync(filename, 'utf8');
-  const data = JSON.parse(fileContent);
-  return data;
-}
 
 function readProxyList(file: string): string[] {
   const list = fs.readFileSync(file, "utf8");
@@ -95,7 +90,6 @@ main();
 
 
 export {
-  readJsonFile,
   readProxyList,
   isValidProxy,
   getBrowser,
