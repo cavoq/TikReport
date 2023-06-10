@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "npx ts-node src/tik-report.ts",
-    "test": "npx jest tests/*.test.ts --watchAll"
+    "test": "npx jest tests/*.test.ts"
   },
   "repository": {
     "type": "git",
