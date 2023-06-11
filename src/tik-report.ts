@@ -79,7 +79,7 @@ async function solveCaptcha(page: puppeteer.Page) {
 async function main() {
   const data = readJsonFile(CONFIG_FILE);
   const proxies = readProxyList(data.proxies);
-  const browser = await getBrowser(proxies[0]);
+  const browser = await getBrowser();
   await reportVideo(browser, data.user, data.videoId);
   /*for (const proxy of proxies) {
     try {

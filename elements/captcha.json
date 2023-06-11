@@ -1,5 +1,6 @@
 {
     "dialog_xpath": "//*[@id=\"tiktok-verify-ele\"]/div",
     "image_xpath": "//*[@id=\"captcha-verify-image\"]",
-    "slider_xpath": "//*[@id=\"secsdk-captcha-drag-wrapper\"]/div[2]"
+    "slider_xpath": "//*[@id=\"secsdk-captcha-drag-wrapper\"]/div[2]",
+    "puzzle_xpath": "//*[@id=\"tiktok-verify-ele\"]/div/div[2]/img[2]"
 }
